@@ -38,22 +38,23 @@ var femaleOfficers: [String] = ["kira", "dax", "tpol", "janeway", "troi", "seven
 First, a set of warm-up problems for everyone
 */
 // Q0: How many human officers are there?
-
+var humanOfficersCount = humanOfficers.count
 
 
 
 // Q1: What percentage of humans are female?
-
+var countHumanFemale = humanOfficers.filter{femaleOfficers.contains($0) }.count
+var percentHumanFemale = Double(countHumanFemale)/Double(humanOfficersCount)
 
 
 
 // Q2: How many first officers are human?
-
+var countHumanFirstOfficer = humanOfficers.filter{firstOfficers.keys.contains($0) }.count
 
 
 
 // Q3: Get a list of females sorted by name
-
+var sortedFemaleArr = femaleOfficers.sorted()
 
 
 
@@ -86,26 +87,26 @@ struct Officer: Comparable {
 Group 1
 */
 // Q4: Create an array of officer objects who captain starships
-
-
+let allCaptains: [Officer] = captains.map{ Officer(name: $0, ship: $1)}
+print (allCaptains.map{$0.name})
 
 
 // Q5: Alphabetize the previous list by the captain's name
-
-
+let allCaptainsAlpha = captains.map{ Officer(name: $0, ship: $1)}.sorted()
+print (allCaptainsAlpha.map{$0.name})
 
 
 /*:
 Group 2
 */
 // Q6: Create an array of officers serving as first officers who are also Vulcan
-
-
-
+let allFirstOfficers: [Officer] = firstOfficers.map { Officer(name: $0, ship: $1)}
+let vulcanFirstOfficers = allFirstOfficers.filter{ vulcanOfficers.contains($0.name)}
+print (vulcanFirstOfficers)
 
 
 // Q7: How many these Vulcan first officers have names shorter than 5 characters?
-
-
+let vulcanFirstOfficersLessFive = vulcanFirstOfficers.filter{ $0.name.count < 5 }.count
+print (vulcanFirstOfficersLessFive)
 
 
